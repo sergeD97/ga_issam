@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition>
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+              <h1>
+                404 Error Page
+              </h1>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+              <div class="error-page">
+                <h2 class="headline text-yellow"> 404</h2>
+
+                <div class="error-content">
+                  <h3><i class="fa fa-warning text-yellow"></i> Oops! Page not found.</h3>
+
+                  <p>
+                    We could not find the page you were looking for.
+                    Meanwhile, you may <a href="../../index.html">return to dashboard</a> or try using the search form.
+                  </p>
+
+                  <form class="search-form">
+                    <div class="input-group">
+                      <input type="text" name="search" class="form-control" placeholder="Search"/>
+
+                      <div class="input-group-btn">
+                        <button type="submit" name="submit" class="btn btn-warning btn-flat"><i class="fa fa-search"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <!-- /.input-group -->
+                  </form>
+                </div>
+                <!-- /.error-content -->
+              </div>
+              <!-- /.error-page -->
+            </section>
+            <!-- /.content -->
+        </ui:composition>
+    </h:body>
+</html>
+

@@ -1,0 +1,1115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+     
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <ui:composition>
+            <div id="nav">
+                 <section class="content-header">
+      <h1>
+        Preinscription
+        <small></small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> accueil</a></li>
+        <li class="active">preinscription</li>
+      </ol>
+    </section>
+            </div>
+            <section class="content container-fluid">
+            <h:form id="todoForm">
+            <div class="box box-primary">
+                <div class="box-body">
+               <div>
+          <!-- Custom Tabs -->
+          <div class="nav-tabs-custom">
+              <!-- Button de deplacement Js -->
+              <div style="display: none">
+                <a href="#tab_1" data-toggle="tab" id="s1">s1</a>
+                <a href="#tab_2" data-toggle="tab" id="s2">s2</a>
+                <a href="#tab_3" data-toggle="tab" id="s3">s3</a>
+                <a href="#tab_4" data-toggle="tab" id="s4">s4</a>
+                <a href="#tab_5" data-toggle="tab" id="s5">s5</a>
+                <a href="#tab_6" data-toggle="tab" id="s6">s6</a>
+               </div>
+              <!-- Button de deplacement Js -->
+            <ul class="nav nav-tabs">
+              <li class="active"><a id="a1">Recommandation</a></li>
+              <li><a id="a2">Profil ></a></li>
+              <li><a id="a3">Scolarité ></a></li>
+              <li><a id="a4">Scolarité Autres ></a></li>
+              <li><a id="a5">Contact ></a></li>
+              <li><a id="a6">Validation</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="tab_1">
+                <b>Recommandation</b>
+                <div class="tab-pane active" id="Infosbefore" role="tabpanel">
+                                                            <h6><span class="badge  badge-danger">Remplissez les Indormations Correctement</span></h6>
+                                                            <h6><span class="badge badge-flat badge-danger">En ce qui concerne le née vers la date de naissance ici est le 01/01/1990 par exemple.</span></h6>
+                                                            <h6><span class="badge badge-flat badge-danger">pour selectionner un année antérieure , selectionner la dernière année les années antérieures vous serons proposé.</span></h6>
+                                                            <h6><span class="badge badge-flat badge-danger">Uniquement les champs suivis de * sont obligatoires</span></h6>
+
+                                                        </div>
+                
+                <button type="button" id="b1" onclick="wizard(this.id)" class="btn pull-right btn-success btn-sm">Suivant ></button>
+              </div>
+              <!-- /.tab-pane -->
+              <div class="tab-pane" id="tab_2">
+                  <legend class="text-bold">Informations Personnelles</legend>
+
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-3">
+                                                                            <label class="control-label col-form-label">#{msg['nom']} : <code>*</code></label>
+                                                                        </div>
+                                                                        <div class="col-md-9 f-error">
+                                                                            <h:inputText class="form-control f-error wcontrol " id="nom"  value="#{preinscriptionBean.preins.nom}"/>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-3">
+                                                                            <label class="control-label col-form-label">#{msg['prenom.label']} : </label>
+                                                                        </div>
+                                                                        <div class="col-md-9">
+                                                                            <h:inputText class="form-control wcontrol" value="#{preinscriptionBean.preins.prenom}"/>
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-3">
+                                                                            <label class="control-label col-form-label">Sexe : <code>*</code></label>
+                                                                        </div>
+                                                                        <div class="col-md-9">
+
+                                                                            <h:selectOneRadio class="custom-control custom-radio wcontrol" value="#{preinscriptionBean.sexe}">
+                                                                                <f:selectItem itemValue="Femme" itemLabel="Feminin" />
+                                                                                <f:selectItem itemValue="Homme" itemLabel="Masculin" />
+                                                                            </h:selectOneRadio>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-4">
+                                                                            <label class="control-label col-form-label">Date Naissance : <code>*</code></label>
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                                                <h:inputText  class="form-control pickadate-labels wcontrol" id="dateNaissance" value="#{preinscriptionBean.datenaiss}" />
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-4">
+                                                                            <label class="control-label col-form-label">Lieu Naissance : <code>*</code></label>
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <h:inputText class="form-control wcontrol" id="lieuNaissance" value="#{preinscriptionBean.preins.lieunaiss}"/>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-4">
+                                                                            <label class="control-label col-form-label">Nationalité : <code>*</code></label>
+                                                                        </div>
+
+                                                                        <div class="col-md-8">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon">
+                                                                                    <i class="fa fa-flag"></i>
+                                                                                </span>
+                                                                                <h:selectOneMenu class="form-control wcontrol" id="nationalite" value="#{preinscriptionBean.pays}" onchange='setDisable("paysD", this)' >
+                                                                                    <f:selectItems value="#{menuBean.listPays}" var="pays" itemValue="#{pays.codepays}" />
+                                                                                </h:selectOneMenu>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row paysD" >
+                                                                        <div class="col-md-4">
+                                                                            <label class="control-label col-form-label">Région Origine : <code>*</code></label>
+                                                                        </div>
+
+                                                                        <div class="col-md-8">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon">
+                                                                                    <i class="fa fa-flag"></i>
+                                                                                </span>
+                                                                                <h:selectOneMenu class="form-control wcontrol paysD" id="region" value="#{preinscriptionBean.region}" onchange="document.getElementById('todoForm:hideRegion').value=this.value">
+                                                                                    <f:selectItems value="#{menuBean.listRegion}" var="region" itemLabel="#{region.libelleregionlangue1}" itemValue="#{region.coderegion}"/>
+                                                                                    <f:ajax execute="todoForm:hideRegion" render="todoForm:departement" event="change"/>
+                                                                                </h:selectOneMenu>
+                                                                                <h:inputHidden id="hideRegion" value="#{menuBean.pays}"/>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row paysD">
+                                                                        <div class="col-md-4">
+                                                                            <label class="control-label col-form-label">Département : <code>*</code></label>
+                                                                        </div>
+
+                                                                        <div class="col-md-8">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon">
+                                                                                    <i class="fa fa-flag"></i>
+                                                                                </span>
+                                                                                <h:selectOneMenu class="form-control wcontrol paysD" id="departement" value="#{preinscriptionBean.departementGeo}">
+                                                                                    <f:selectItems value="#{menuBean.listDepartementGeo}"  var="dep" itemLabel="#{dep.libelledepartementgeographiquelangue1}" itemValue="#{dep.codedepartementgeographique}"/>
+                                                                                </h:selectOneMenu>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <div class="form-group row margin-top-10">
+                                                                        <div class="col-md-4">
+                                                                            <label class="control-label col-form-label">Ville Residence : <code>*</code></label>
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <h:inputText class="form-control wcontrol" id="ville" value="#{preinscriptionBean.preins.villeresid}"/>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-3">
+                                                                            <label class="control-label col-form-label">1er Langue :</label>
+                                                                        </div>
+                                                                        <div class="col-md-9">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon">
+                                                                                    <i class="fa fa-language"></i>
+                                                                                </span>
+                                                                                <h:selectOneMenu  class="form-control wcontrol" id="langue1" value="#{preinscriptionBean.langue1}">
+                                                                                    <f:selectItems value="#{menuBean.listLangue}" var="l" itemValue="#{l.idlangue}" itemLabel="#{l.libellefr}" />
+                                                                                </h:selectOneMenu>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-3">
+                                                                            <label class="control-label col-form-label">2nd Langue : </label>
+                                                                        </div>
+                                                                        <div class="col-md-9">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon">
+                                                                                    <i class="fa fa-language"></i>
+                                                                                </span>
+                                                                                <h:selectOneMenu class="form-control wcontrol" id="arrondid" value="#{preinscriptionBean.langue2}">
+                                                                                    <f:selectItems value="#{menuBean.listLangue}" var="l1" itemValue="#{l1.idlangue}" itemLabel="#{l1.libellefr}"/>
+                                                                                </h:selectOneMenu>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-3">
+                                                                            <label class="control-label col-form-label">N°Telephone : </label>
+                                                                        </div>
+                                                                        <div class="col-md-9">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                                                                <h:inputText class="form-control wcontrol" id="telephone" value="#{preinscriptionBean.preins.numtel}"/>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-4">
+                                                                            <label class="control-label col-form-label">Numero de cni: </label>
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <h:inputText class="form-control wcontrol" id="ncni" value="#{preinscriptionBean.preins.numcni}"/>
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-3">
+                                                                            <label class="control-label col-form-label">Email :<code>*</code></label>
+                                                                        </div>
+                                                                        <div class="col-md-9">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon">
+                                                                                    <i class="fa fa-envelope"></i>
+                                                                                </span>
+                                                                                <h:inputText class="form-control wcontrol" id="email" value="#{preinscriptionBean.preins.email}"/>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-3">
+                                                                            <label class="control-label col-form-label">Boite Postale :</label>
+                                                                        </div>
+                                                                        <div class="col-md-9">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon"><i class="fa fa-address-card"></i></span>
+                                                                                <h:inputText class="form-control wcontrol" id="bp" value="#{preinscriptionBean.preins.adresse}"/>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-4">
+                                                                            <label class="control-label col-form-label">Situation Matri. </label>
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon"><i class="fa fa-life-ring"></i></span>
+                                                                                <h:selectOneMenu class="form-control wcontrol" id="situation" value="#{preinscriptionBean.preins.situationmatrimoniale}">
+                                                                                    <f:selectItem itemValue="Celibataire" itemLabel="Célibataire" />
+                                                                                    <f:selectItem itemValue="Mariee" itemLabel="Marié(e)" />
+                                                                                    <f:selectItem itemValue="Divorcee" itemLabel="Divorcé(e)" />
+                                                                                    <f:selectItem itemValue="Veuf/Veuve" itemLabel="Veuf/veuve" />
+
+                                                                                </h:selectOneMenu>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                  
+                  
+                  <button type="button" id="b2" onclick="wizard(this.id)" class="btn pull-right btn-success btn-sm">Suivant ></button>
+                  <button type="button" id="ba2" class="btn pull-left btn-primary btn-sm" onclick="precedent(this.id)"> Precedent</button>
+              
+              </div>
+              <!-- /.tab-pane -->
+              <div class="tab-pane" id="tab_3">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <legend class="text-bold">Choix de la Formation</legend>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-3">
+                                                                            <label class="control-label col-form-label">Cycle : </label>
+                                                                        </div>
+                                                                        <div class="col-md-9">
+                                                                            <h:selectOneMenu class="form-control wcontrol" id="cycle" value="#{preinscriptionBean.cycle}" onchange="document.getElementById('todoForm:hideCycle').value = this.value">
+                                                                                <f:selectItems value="#{menuBean.listCycle}" var="cycle" itemLabel="#{cycle.libelle}" itemValue="#{cycle.idcycle}">
+                                                                                </f:selectItems>
+                                                                                <f:ajax event="change" execute="todoForm:hideCycle" render="todoForm:choixCycle1 todoForm:choixCycle2 todoForm:dataPiece" />
+                                                                            </h:selectOneMenu>
+                                                                            <h:inputHidden id="hideCycle" value="#{menuBean.cycle}"/>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-4">
+                                                                            <label class="control-label col-form-label">Type Formation :</label>
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <h:selectOneMenu class="form-control wcontrol" id="typeFormation" value="#{preinscriptionBean.typeFormation}" onchange="document.getElementById('todoForm:hideTyFormation').value = this.value">
+                                                                                <f:selectItems value="#{menuBean.listTypeFormation}" var="tf" itemValue="#{tf.idformation}" itemLabel="#{tf.libelleFr}"/>
+                                                                                 <f:ajax event="change" execute="todoForm:hideTyFormation" render="todoForm:choixCycle1 todoForm:choixCycle2 todoForm:dataPiece" />
+                                                                            </h:selectOneMenu>
+                                                                            
+                                                                            <h:inputHidden id="hideTyFormation" value="#{menuBean.tf}"/>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-3">
+                                                                            <label class="control-label col-form-label">1er Choix : </label>
+                                                                        </div>
+                                                                        <div class="col-md-9">
+                                                                            <h:selectOneMenu class="form-control wcontrol" id="choixCycle1" value="#{preinscriptionBean.filiere1}"  onchange="document.getElementById('todoForm:hideChoix').value = this.value">
+                                                                                <f:selectItem />
+                                                                                <f:selectItems value="#{menuBean.listFiliere}" var="c1" itemLabel="#{c1.libelefilierefr}" itemValue="#{c1.codefilere}"/>
+                                                                                
+                                                                                <f:ajax event="change" execute="todoForm:hideChoix" render="todoForm:dataPiece" />
+                                                                            </h:selectOneMenu>
+                                                                            <h:inputHidden id="hideChoix" value="#{menuBean.filiere}"/>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-3">
+                                                                            <label class="control-label col-form-label">2nd Choix : </label>
+                                                                        </div>
+                                                                        <div class="col-md-9">
+                                                                            <h:selectOneMenu class="form-control wcontrol" id="choixCycle2" value="#{preinscriptionBean.filiere2}">
+                                                                                <f:selectItem />
+                                                                                <f:selectItems value="#{menuBean.listFiliere}" var="c1" itemLabel="#{c1.libelefilierefr}" itemValue="#{c1.codefilere}"/>
+
+                                                                            </h:selectOneMenu>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    
+                                                                    <legend class="text-bold">Diplome de base</legend>
+                                                                    <div class="form-group row margin-top-10">
+                                                                        <div class="col-md-5">
+                                                                            <label class="control-label col-form-label">Diplôme d'admission :</label>
+                                                                        </div>
+                                                                        <div class="col-md-7">
+                                                                            <h:selectOneMenu class="form-control wcontrol" id="diplomeAdmission" value="#{preinscriptionBean.diplomeAd}">
+                                                                                <f:selectItems value="#{menuBean.listDiplome}" var="di" itemLabel="#{di.libellefr}" itemValue="#{di.iddiplome}" />
+
+                                                                            </h:selectOneMenu>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-3">
+                                                                            <label class="control-label col-form-label">Serie : </label>
+                                                                        </div>
+                                                                        <div class="col-md-9">
+                                                                            <h:selectOneMenu class="form-control wcontrol" id="serie" value="#{preinscriptionBean.serie}">
+                                                                                <f:selectItems value="#{menuBean.listTypeBacc}" var="tb" itemLabel="#{tb.libellefr}" itemValue="#{tb.idtypebacc}"/>
+
+                                                                            </h:selectOneMenu>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-4">
+                                                                            <label class="control-label col-form-label">Mention Obtenue :</label>
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <h:selectOneMenu class="form-control wcontrol" id="mention" value="#{preinscriptionBean.mention}">
+                                                                                <f:selectItems value="#{menuBean.listMention}" var="me" itemLabel="#{me.libellefr}" itemValue="#{me.idmention}" />
+
+                                                                            </h:selectOneMenu>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-4">
+                                                                            <label class="control-label col-form-label">Année d'obtention :</label>
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <h:inputText class="form-control wcontrol" id="anneeObtention" value="#{preinscriptionBean.preins.anneeobtentiondipl}"/>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-5">
+                                                                            <label class="control-label col-form-label">Etablissement d'obt. :</label>
+                                                                        </div>
+                                                                        <div class="col-md-7">
+                                                                            <h:inputText class="form-control wcontrol" id="etsObtention" value="#{preinscriptionBean.preins.etablissementdipl}"/>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <legend class="text-bold margin-top-10">Pieces du dossier à completer pour la formation</legend>
+                                                                    <h:dataTable class="table table-bordered table-striped table-hover" var='piece' value="#{menuBean.listPieceDossier}" id='dataPiece'>
+                                                                        
+                                                                        <h:column>
+
+                                                                                <f:facet name="header">#</f:facet>
+
+                                                                                <h:outputText value="#"/>
+
+                                                                            </h:column>
+
+                                                                            <h:column>
+                                                                                <f:facet name="header">Element du Dossier</f:facet>
+                                                                                <h:outputText value="#{piece.libele}"/>
+                                                                            </h:column>
+
+                                                                    </h:dataTable>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <legend class="text-bold margin-top-10">rélevé de notes</legend>
+                                                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                                        <div class="modal-dialog">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                                                                                    <h4 class="modal-title" id="myModalLabel">Ajouter une note par matière</h4>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-md-3">
+                                                                                            <label class="control-label col-form-label">Matière :</label>
+                                                                                        </div>
+                                                                                        <div class="col-md-9">
+                                                                                            <h:selectOneMenu  class="form-control" id="matiere" value="#{preinscriptionBean.matiere}">
+                                                                                                <f:selectItems value="#{menuBean.listMatieres}" var="mm" itemLabel="#{mm.libellefr}" itemValue="#{mm.idmatiere}"/>
+
+                                                                                            </h:selectOneMenu>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-md-3">
+                                                                                            <label class="control-label col-form-label">Note :</label>
+                                                                                        </div>
+                                                                                        <div class="col-md-9">
+                                                                                            <h:inputText class="form-control"  id="note" value="#{preinscriptionBean.note.noteOuGrade}"/>
+                                                                                        </div>
+                                                                                    </div>
+
+
+                                                                                    <h:commandButton class="btn btn-primary" value="Ajouter" action="#{preinscriptionBean.ajoutNote()}" >
+                                                                                        <f:ajax execute="todoForm" render="todoForm:todoTable"/>
+                                                                                    </h:commandButton>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row margin-top-10">
+                                                                        <div class="col-md-3">
+
+                                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+
+                                                                                <i class="fa fa-plus-circle"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                        Ajouter une Note du relevé
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <h:dataTable id="todoTable"  var="note" class="table table-striped table-bordered table-hover" value="#{preinscriptionBean.listMatiere}">
+
+                                                                            <h:column>
+
+                                                                                <!-- display currently selected row number -->
+                                                                                <f:facet name="header">Matière</f:facet>
+
+                                                                                <h:outputText value="#{note.matieres.idmatiere}"/>
+
+                                                                            </h:column>
+
+                                                                            <h:column>
+                                                                                <f:facet name="header">Note</f:facet>
+                                                                                <h:outputText value="#{note.noteOuGrade}"/>
+                                                                            </h:column>
+                                                                            <h:column>
+                                                                                <h:commandLink id="remove" class="btn btn-danger fa fa-minus-circle" action="#{preinscriptionBean.removeNote(note.matieres.idmatiere)}" onclick="return confirm('Are you sure?')">
+                                                                                    <f:ajax  render="todoForm:todoTable" />
+                                                                                </h:commandLink>
+                                                                            </h:column>
+
+                                                                        </h:dataTable>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                <button type="button" id="b3" onclick="wizard(this.id)" class="btn pull-right btn-success btn-sm">Suivant ></button>
+                <button type="button" id="ba3" class="btn pull-left btn-primary btn-sm" onclick="precedent(this.id)"> Precedent</button>
+              
+              </div>
+              
+              <div class="tab-pane" id="tab_4">
+                                                           <div class="row">
+                                                                 <div class="col-md-6">
+                                                                    <legend class="text-bold">Loisirs Profession</legend>
+                                                               
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-3">
+                                                                            <label class="control-label col-form-label">Loisir 1 :</label>
+                                                                        </div>
+                                                                        <div class="col-md-9">
+                                                                            <h:selectOneMenu class="form-control wcontrol" id="loisir1" value="#{preinscriptionBean.loisir1}">
+                                                                                <f:selectItems value="#{menuBean.listLoisir}" var="lo1" itemLabel="#{lo1.libellefr}" itemValue="#{lo1.idloisir}"/>
+
+                                                                            </h:selectOneMenu>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-3">
+                                                                            <label class="control-label col-form-label">Loisir 2 : </label>
+                                                                        </div>
+                                                                        <div class="col-md-9">
+                                                                            <h:selectOneMenu class="form-control wcontrol" id="loisir2" value="#{preinscriptionBean.loisir2}">
+                                                                                <f:selectItems value="#{menuBean.listLoisir}" var="lo2" itemLabel="#{lo2.libellefr}" itemValue="#{lo2.idloisir}"/>
+
+                                                                            </h:selectOneMenu>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-3">
+                                                                            <label class="control-label col-form-label">Travailleur ? </label>
+                                                                        </div>
+                                                                        <div class="col-md-9">
+                                                                            <h:selectOneRadio class="custom-control custom-radio wcontrol" id="taf" onchange='setDisable("travailD", this)' value="#{preinscriptionBean.taf}" >
+                                                                                <f:selectItem itemValue="oui" itemLabel="Oui" />
+                                                                                <f:selectItem itemValue="non" itemLabel="Non" />
+                                                                            </h:selectOneRadio>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row travailD">
+                                                                        <div class="col-md-3">
+                                                                            <label class="control-label col-form-label">Description Taf</label>
+                                                                        </div>
+                                                                        <div class="col-md-9">
+                                                                            <h:inputTextarea cols="5" class="form-control travailD wcontrol" value="#{preinscriptionBean.preins.activiteprofessionnelle}">
+
+                                                                            </h:inputTextarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <legend class="text-bold">Activité sportive</legend>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-4">
+                                                                            <label class="control-label col-form-label">Activité Sportive?</label>
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <h:selectOneRadio class="custom-control custom-radio wcontrol" value="#{preinscriptionBean.sp}">
+                                                                                <f:selectItem itemValue="oui" itemLabel="Oui" />
+                                                                                <f:selectItem itemValue="non" itemLabel="Non" />
+                                                                            </h:selectOneRadio>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-4">
+                                                                            <label class="control-label col-form-label">Sport de competition?</label>
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <h:selectOneRadio class="custom-control custom-radio wcontrol" id="sportCom" onchange='setDisable("sportD", this)' value="#{preinscriptionBean.spCom}">
+                                                                                <f:selectItem itemValue="oui" itemLabel="Oui" />
+                                                                                <f:selectItem itemValue="non" itemLabel="Non" />
+                                                                            </h:selectOneRadio>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row sportD">
+                                                                        <div class="col-md-3">
+                                                                            <label class="control-label col-form-label sportD">1er Sport : </label>
+                                                                        </div>
+                                                                        <div class="col-md-9">
+                                                                            <h:selectOneMenu class="form-control sportD wcontrol" id="sport1" value="#{preinscriptionBean.sport1}">
+                                                                                <f:selectItems value="#{menuBean.listSport}" var="sp1" itemLabel="#{sp1.libellefr}" itemValue="#{sp1.idsport}"/>
+                                                                            </h:selectOneMenu>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row sportD">
+                                                                        <div class="col-md-3">
+                                                                            <label class="control-label col-form-label sportD">2nd Sport :</label>
+                                                                        </div>
+                                                                        <div class="col-md-9">
+                                                                            <h:selectOneMenu class="form-control sportD wcontrol" id="sport2" value="#{preinscriptionBean.sport2}">
+                                                                                <f:selectItems value="#{menuBean.listSport}" var="sp2" itemLabel="#{sp2.libellefr}" itemValue="#{sp2.idsport}"/>
+                                                                            </h:selectOneMenu>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+
+                                                            
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <legend class="text-bold margin-top-10">Handicap</legend>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-3">
+                                                                            <label class="control-label col-form-label">Handicap ?</label>
+                                                                        </div>
+                                                                        <div class="col-md-9">
+                                                                            <h:selectOneRadio class="custom-control custom-radio wcontrol" id="handicap" onchange='setDisable("handicapD", this)' value="#{preinscriptionBean.handicap}" >
+                                                                                <f:selectItem itemValue="oui" itemLabel="Oui"  />
+                                                                                <f:selectItem itemValue="non" itemLabel="Non" />
+                                                                            </h:selectOneRadio>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row handicapD">
+                                                                        <div class="col-md-4">
+                                                                            <label class="control-label col-form-label">Type d'handicap</label>
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <h:selectOneMenu class="form-control handicapD wcontrol" id="typeHandicap" value="#{preinscriptionBean.typeHandicap}">
+                                                                                <f:selectItem itemValue='' itemLabel=""/>
+                                                                                <f:selectItems value="#{menuBean.listHandicap}" var="h" itemLabel="#{h.libellefr}" itemValue="#{h.idhandicap}" />
+                                                                            </h:selectOneMenu>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <legend class="text-bold margin-top-10">Autres diplômes</legend>
+                                                                    <div class="modal fade" id="myModaldip" tabindex="-1" role="dialog" aria-labelledby="myModaldipLabel" aria-hidden="true">
+                                                                        <div class="modal-dialog">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                                                                                    <h4 class="modal-title" id="myModalLabel">Ajouter diplôme</h4>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-md-3">
+                                                                                            <label class="control-label col-form-label">Diplôme :</label>
+                                                                                        </div>
+                                                                                        <div class="col-md-9">
+                                                                                            <h:selectOneMenu  class="form-control" value="#{preinscriptionBean.diplomeA}">
+                                                                                                <f:selectItems value="#{menuBean.listDiplome}" var="ldip" itemValue="#{ldip.iddiplome}" itemLabel="#{ldip.libellefr}"/>
+
+                                                                                            </h:selectOneMenu>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-md-3">
+                                                                                            <label class="control-label col-form-label">Année :</label>
+                                                                                        </div>
+                                                                                        <div class="col-md-9">
+                                                                                            <h:selectOneMenu  class="form-control" value="#{preinscriptionBean.diplomeAutre.anneobtention}">
+                                                                                                <f:selectItem itemValue="2017" itemLabel="2017" />
+                                                                                                <f:selectItem itemValue="2016" itemLabel="2016" />
+                                                                                                <f:selectItem itemValue="2015" itemLabel="2015" />
+                                                                                                <f:selectItem itemValue="2014" itemLabel="2014" />
+                                                                                                <f:selectItem itemValue="2013" itemLabel="2013" />
+
+                                                                                            </h:selectOneMenu>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-md-4">
+                                                                                            <label class="control-label col-form-label">Etablissement :</label>
+                                                                                        </div>
+                                                                                        <div class="col-md-8">
+                                                                                            <h:inputText class="form-control" value="#{preinscriptionBean.diplomeAutre.etabobtention}"/>
+                                                                                        </div>
+                                                                                    </div>
+
+
+                                                                                    <h:commandButton class="btn btn-primary" value="Ajouter" >
+                                                                                        <f:ajax execute="todoForm" render="todoForm:todoTabledip" listener="#{preinscriptionBean.ajouDiplomeAutre()}"/>
+                                                                                    </h:commandButton>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-3">
+
+                                                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModaldip">
+
+                                                                                <i class="fa fa-plus-circle"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                        Ajouter un autre Diplome
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <h:dataTable id="todoTabledip"  var="dip" class="table table-striped table-bordered table-hover table-responsive" value="#{preinscriptionBean.listDiplome}">
+
+                                                                            <h:column>
+
+                                                                                <!-- display currently selected row number -->
+                                                                                <f:facet name="header">Diplôme</f:facet>
+
+                                                                                <h:outputText value="#{dip.diplomes.iddiplome}" />
+
+                                                                            </h:column>
+
+                                                                            <h:column>
+                                                                                <f:facet name="header">Année</f:facet>
+                                                                                <h:outputText value="#{dip.anneobtention}" />
+                                                                            </h:column>
+                                                                            <h:column>
+                                                                                <f:facet name="header">Etablissement</f:facet>
+                                                                                <h:outputText value="#{dip.etabobtention}" />
+                                                                            </h:column>
+                                                                            <h:column>
+                                                                                <h:commandLink id="remove" class="btn btn-danger fa fa-minus-circle" action="#{preinscriptionBean.removeDiplumeAutre(dip.diplomes.iddiplome)}" onclick="return confirm('Are you sure?')">
+                                                                                    <f:ajax render="todoForm:todoTabledip" />
+                                                                                </h:commandLink>
+                                                                            </h:column>
+
+                                                                        </h:dataTable>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                  <button type="button" id="b4" class="btn pull-right btn-success btn-sm" onclick="wizard(this.id)">Suivant ></button>
+                   <button type="button" id="ba4" class="btn pull-left btn-primary btn-sm" onclick="precedent(this.id)">Precedent</button>
+              
+              </div>
+              <div class="tab-pane" id="tab_5">
+                  <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <legend class="text-bold">Personne à contacter en cas de Problème</legend>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-4">
+                                                                            <label class="control-label col-form-label">Nom Prénom :<code>*</code></label>
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon">
+                                                                                    <i class="fa fa-user"></i>
+                                                                                </span>
+                                                                                <h:inputText class="form-control wcontrol" id="nomPers" value="#{preinscriptionBean.preins.nompersonneacontacter}"/>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-4">
+                                                                            <label class="control-label col-form-label">N° Telephone :<code>*</code></label>
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon">
+                                                                                    <i class="fa fa-phone"></i>
+                                                                                </span>
+                                                                                <h:inputText class="form-control wcontrol" id="telPers" value="#{preinscriptionBean.preins.telpersonneacontacter}"/>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-4">
+                                                                            <label class="control-label col-form-label">Email :<code>*</code></label>
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon">
+                                                                                    <i class="fa fa-envelope"></i>
+                                                                                </span>
+                                                                                <h:inputText class="form-control wcontrol" id="emailpers" value="#{preinscriptionBean.preins.emailpersonneacontacter}"/>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-6">
+                                                                    <legend class="text-bold">Informations Parentales </legend>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-4">
+                                                                            <label class="control-label col-form-label">Nom Prénom Mère<code>*</code></label>
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon">
+                                                                                    <i class="fa fa-user"></i>
+                                                                                </span>
+                                                                                <h:inputText class="form-control wcontrol" id="nomMere" value="#{preinscriptionBean.preins.nomparent1}"/>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-4">
+                                                                            <label class="control-label col-form-label">N° Telephone Mère :</label>
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon">
+                                                                                    <i class="fa fa-phone"></i>
+                                                                                </span>
+                                                                                <h:inputText class="form-control wcontrol" id="telMere" value="#{preinscriptionBean.preins.telparent1}"/>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-4">
+                                                                            <label class="control-label col-form-label">Nom Prénom Père</label>
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon">
+                                                                                    <i class="fa fa-user"></i>
+                                                                                </span>
+                                                                                <h:inputText class="form-control wcontrol" id="nomPere" value="#{preinscriptionBean.preins.telparent2}"/>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="col-md-4">
+                                                                            <label class="control-label col-form-label">N° Telephone Père</label>
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <div class="input-group">
+                                                                                <span class="input-group-addon">
+                                                                                    <i class="fa fa-phone"></i>
+                                                                                </span>
+                                                                                <h:inputText class="form-control wcontrol"  requiredMessage="N° Tel Père requis :etape Autres Contact" id="telPere" value="#{preinscriptionBean.preins.telparent2}"/>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                  
+                  <button type="button" id="b5" class="btn pull-right btn-success btn-sm" onclick="wizard(this.id)">Suivant ></button>
+                  <button type="button" id="ba5" class="btn pull-left btn-primary btn-sm" onclick="precedent(this.id)">Precedent</button>
+              
+              </div>
+              <div class="tab-pane" id="tab_6">
+                  <legend class="text-bold margin-top-10">Recapitulatif</legend>
+                  <div class="row">
+                      <p id="recapitulatif">
+                          <div class='row' style='margin-bottom: 30px'>
+          <div class="col-md-6">
+            <div class="box-header with-border">
+              <i class="fa fa-text-width"></i>
+
+              <h3 class="box-title text-bold" style='text-decoration: underline;'>Vos Informations Personnelles</h3>
+            </div>
+            <!-- /.box-header -->
+            <div>
+              <table class="custom-control" cellspacing="4">
+                <tr >
+                    <td ><i style="margin-right: 20px">Nom et Prenom : </i></td>
+                    <td><b><h4  ><span class="recap text-bold"></span>. <span class="recap text-bold"></span></h4></b></td>
+                </tr>
+                <tr>
+                    <td><i>Sexe : </i></td>
+                    <td><b><h4><span class="recap text-bold"></span></h4></b></td>
+                </tr>
+                <tr>
+                    <td><i>Date de Naissance : </i></td>
+                    <td><b><h4><span class="recap text-bold"></span></h4></b></td>
+                </tr>
+                <tr>
+                    <td><i>Lieu de Naissance : </i></td>
+                    <td><b><h4><span class="recap text-bold"></span></h4></b></td>
+                </tr>
+                <tr>
+                    <td><i>Pays de d' origine : </i></td>
+                    <td><b><h4><span class="recap text-bold"></span></h4></b></td>
+                </tr>
+                <tr>
+                    <td><i>Region : </i></td>
+                    <td><b><h4><span class="recap text-bold"></span></h4></b></td>
+                </tr>
+                <tr>
+                    <td><i>Departement : </i></td>
+                    <td><b><h4><span class="recap text-bold"></span></h4></b></td>
+                </tr>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        
+                          <div class="col-md-6">
+          <div>
+            <!-- /.box-header -->
+            <div>
+              <table class="custom-control" cellspacing="4">
+                <tr >
+                    <td ><i style="margin-right: 20px">Ville de Residence : </i></td>
+                    <td><b><h4 class="box-title" ><span class="recap text-bold"></span></h4></b></td>
+                </tr>
+                <tr>
+                    <td><i>Langues Parlées : </i></td>
+                    <td><b><h4><span class="recap text-bold"></span> et <span class="recap text-bold"></span></h4></b></td>
+                </tr>
+                <tr>
+                    <td><i>Numero de Telephone : </i></td>
+                    <td><b><h4><span class="recap text-bold"></span></h4></b></td>
+                </tr>
+                <tr>
+                    <td><i>Numero de CNI : </i></td>
+                    <td><b><h4><span class="recap text-bold"></span></h4></b></td>
+                </tr>
+                <tr>
+                    <td><i>Adresse Email: </i></td>
+                    <td><b><h4><span class="recap text-bold"></span></h4></b></td>
+                </tr>
+                <tr>
+                    <td><i>Boite Postal/Adresse : </i></td>
+                    <td><b><h4><span class="recap text-bold"></span></h4></b></td>
+                </tr>
+                <tr>
+                    <td><i>Situation Matrimoniale : </i></td>
+                    <td><b><h4><span class="recap text-bold"></span></h4></b></td>
+                </tr>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+          </div>
+                          <div class="row" style='margin-bottom: 30px'>
+          <div class="col-md-6">
+            <div class="box-header with-border">
+              <i class="fa fa-text-width"></i>
+
+              <h3 class="box-title text-bold" style='text-decoration: underline;'>Choix de la Formation et diplome de Base</h3>
+            </div>
+            <!-- /.box-header -->
+            <div>
+              <table class="custom-control" cellspacing="4">
+                <tr >
+                    <td ><i style="margin-right: 20px">Cycle : </i></td>
+                    <td><b><h4 ><span class="recap text-bold"></span></h4></b></td>
+                </tr>
+                <tr>
+                    <td><i>Type de Formation : </i></td>
+                    <td><b><h4><span class="recap text-bold"></span></h4></b></td>
+                </tr>
+                <tr>
+                    <td><i>Choix Filiere 1 : </i></td>
+                    <td><b><h4><span class="recap text-bold"></span></h4></b></td>
+                </tr>
+                <tr>
+                    <td><i>Choix Filiere 2 : </i></td>
+                    <td><b><h4><span class="recap text-bold"></span></h4></b></td>
+                </tr>
+                <tr>
+                    <td><i>Diplome d'admission : </i></td>
+                    <td><b><h4><span class="recap text-bold"></span>, Serie :<span class="recap text-bold"></span></h4></b></td>
+                </tr>
+                <tr>
+                    <td><i>Mention Obtenue : </i></td>
+                    <td><b><h4><span class="recap text-bold"></span></h4></b></td>
+                </tr>
+                <tr>
+                    <td><i>Anneé D'obtention : </i></td>
+                    <td><b><h4><span class="recap text-bold"></span></h4></b></td>
+                </tr>
+                  <tr>
+                    <td><i>Etablissement D'obtention : </i></td>
+                    <td><b><h4><span class="recap text-bold"></span></h4></b></td>
+                </tr>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        
+         
+
+<div class="col-md-6">
+          <div>
+            <div class="box-header with-border">
+              <i class="fa fa-text-width"></i>
+
+              <h3 class="box-title text-bold" style='text-decoration: underline;'>Autres Informations</h3>
+            </div>
+            <!-- /.box-header -->
+            <div>
+              <table class="custom-control" >
+                <tr >
+                    <td ><i style="margin-right: 20px">Loisirs : </i></td>
+                    <td><b><h4 class="box-title" ><span class="recap text-bold"></span> et <span class="recap text-bold"></span></h4></b></td>
+                </tr>
+                <tr>
+                    <td><i>Travailleur : </i></td>
+                    <td><b><h4><span class="recap text-bold"></span></h4></b></td>
+                </tr>
+                <tr>
+                    <td><i>Description du Travail : </i></td>
+                    <td><b><h4><span class="recap text-bold"></span></h4></b></td>
+                </tr>
+                
+                <tr>
+                    <td><i>Activité Sportive : </i></td>
+                    <td><b><h4><span class="recap text-bold"></span></h4></b></td>
+                </tr>
+                <tr>
+                    <td><i>Sport de Competition : </i></td>
+                    <td><b><h4><span class="recap text-bold"></span>, (<span class="recap text-bold"></span> et <span class="recap text-bold"></span>).</h4></b></td>
+                </tr>
+                  <tr>
+                    <td><i>Handicap : </i></td>
+                    <td><b><h4><span class="recap text-bold"></span>, <span class="recap text-bold"></span></h4></b></td>
+                </tr>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        </div>
+                          
+
+<div class="row" style='margin-bottom: 30px'>
+          <div class="col-md-6">
+            <div class="box-header with-border">
+              <i class="fa fa-text-width"></i>
+
+              <h3 class="box-title text-bold" style='text-decoration: underline;'>Informations Parentales</h3>
+            </div>
+            <!-- /.box-header -->
+            <div>
+              <table class="custom-control" cellspacing="4">
+                <tr >
+                    <td ><i style="margin-right: 20px">Personne à contacter a cas de probleme : </i></td>
+                    <td><b><h4 class="box-title" ><span class="recap text-bold"></span></h4></b></td>
+                </tr>
+                <tr>
+                    <td><i>Telephone : </i></td>
+                    <td><b><h4><span class="recap text-bold"></span></h4></b></td>
+                </tr>
+                <tr>
+                    <td><i>Adresse Email : </i></td>
+                    <td><b><h4><span class="recap text-bold"></span></h4></b></td>
+                </tr>
+                <tr>
+                    <td><i>Nom de la Mere : </i></td>
+                    <td><b><h4><span class="recap text-bold"></span></h4></b></td>
+                </tr>
+                <tr>
+                    <td><i>Num de Telephone de la Mere : </i></td>
+                    <td><b><h4><span class="recap text-bold"></span></h4></b></td>
+                </tr>
+                <tr>
+                    <td><i>Nom du pere  : </i></td>
+                    <td><b><h4><span class="recap text-bold"></span></h4></b></td>
+                </tr>
+                <tr>
+                    <td><i>Num de telephone du pere : </i></td>
+                    <td><b><h4><span class="recap text-bold"></span></h4></b></td>
+                </tr>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+                            <input type='checkbox' id='confirmation'/> Je confirme que les informations fournies sont exactes
+                          
+                          
+                      </p>
+                  </div>
+                  <h:commandLink  class="btn bg-maroon btn-flat btn-sm " style="float:right" action='#{preinscriptionBean.valider()}' value="Terminer" rendered="#{preinscriptionBean.pers}" id="terminer" onclick="checked()">
+                      <f:ajax execute="@all" render="todoForm:l1 todoForm:l2 todoForm:l3 todoForm:l4 todoForm:l5 todoForm:l6  todoForm:terminer" onevent="trait" />
+                  </h:commandLink>
+                  
+                <button type="button" id="ba6" class="btn pull-left btn-primary btn-sm" onclick="precedent(this.id)">Precedent</button>
+                <br/><br/>
+                <h:graphicImage library="img" name='loader.gif' width="150px" height="100px" style="display:none" id="loader"/>
+                
+                
+                <h:panelGroup style="display:none" layout="block" id="l7">
+                    <h:commandLink  class="btn btn-primary btn-sm " value="Telecharger la fiche de preinscription" id="l4" />
+                <br/>
+                    <h:outputText value="Votre Identifiant : "  id="l1"/><span class="text-bold "><h:outputText value="#{preinscriptionBean.mat}" id="l5" /></span><br/>
+                <h:outputText value="Votre Mot de Passe : "  id="l2" /><span class="text-bold"><h:outputText value="#{preinscriptionBean.pass}" id="l6" /></span><br/>
+                
+                <h:outputText value="NB: Vos connection future ce feront grace a ces identifiant. Veuiller a ne pas les oublier."  id="l3" />
+              
+                </h:panelGroup>
+                </div>
+              <!-- /.tab-pane -->
+            </div>
+            <!-- /.tab-content -->
+          </div>
+          <!-- nav-tabs-custom -->
+        </div>
+         </div>
+        </div>
+           </h:form> 
+                </section>
+        </ui:composition>
+    </body>
+</html>
