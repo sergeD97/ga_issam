@@ -82,17 +82,29 @@ function verifier(root){
     
     var elControls = document.getElementById(root).getElementsByClassName("wcontrol");
     var t = elControls.length;
+    var emailRegex;
     var check = true;
     //return true;
+    //alert(elControls[1].value.trim());
     for(var i=0; i < t; i++){
         
         if(!(elControls[i].style.display==="none")){
+        
         if(elControls[i].value==""){
             elControls[i].style.borderColor="red";
             check=false;
         }else{
             elControls[i].style.borderColor="";
-        }}else{
+        }
+    if(elControls[i].className.indexOf("mail") != -1){
+            if(!checkMail(elControls[i].value)){
+                elControls[i].style.borderColor="red";
+            check=false;
+            }
+        }
+        
+        
+        }else{
              elControls[i].style.borderColor="";
         }
     }
@@ -183,8 +195,11 @@ function setValue(){
     if(handic.checked){
         setDisable("handicapD", handic);
     }
-    
-    
+    if(document.getElementById("todoForm:terminer") == null){
+        document.getElementById("todoForm:l7").style.display="";
+        setValue();
+        change("s6", "a6", "a1");
+    }
     
     var inputs = document.getElementsByTagName("input");
     var t = inputs.length;
@@ -240,4 +255,10 @@ function checked(){
         alert("Veuiller confirmer vos informations avant de soumettre");
         return false;
     }
+}
+
+
+function checkMail(mail){
+    var emailRegex = /^([a-z0-9A-Z._-]+)@([a-z0-9._-]+)\.([a-z]{2,6})$/;
+    return emailRegex.test(mail);
 }

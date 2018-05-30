@@ -249,7 +249,7 @@ and open the template in the editor.
                                                                                 <span class="input-group-addon">
                                                                                     <i class="fa fa-envelope"></i>
                                                                                 </span>
-                                                                                <h:inputText class="form-control wcontrol" id="email" value="#{preinscriptionBean.preins.email}"/>
+                                                                                <h:inputText class="form-control wcontrol mail" id="email" value="#{preinscriptionBean.preins.email}"/>
 
                                                                             </div>
                                                                         </div>
@@ -1081,7 +1081,7 @@ and open the template in the editor.
                           
                       </p>
                   </div>
-                  <h:commandLink  class="btn bg-maroon btn-flat btn-sm " style="float:right" action='#{preinscriptionBean.valider()}' value="Terminer" rendered="#{preinscriptionBean.pers}" id="terminer" onclick="checked()">
+                  <h:commandLink  class="btn bg-maroon btn-flat btn-sm " style="float:right" action='#{preinscriptionBean.valider()}' value="Terminer" rendered="#{preinscriptionBean.pers}"  id="terminer" onclick="return checked()">
                       <f:ajax execute="@all" render="todoForm:l1 todoForm:l2 todoForm:l3 todoForm:l4 todoForm:l5 todoForm:l6  todoForm:terminer" onevent="trait" />
                   </h:commandLink>
                   
@@ -1092,6 +1092,8 @@ and open the template in the editor.
                 
                 <h:panelGroup style="display:none" layout="block" id="l7">
                     <h:commandLink  class="btn btn-primary btn-sm " value="Telecharger la fiche de preinscription" id="l4" />
+                    <br/><h:commandLink  class="btn btn-primary btn-sm " value="nouvelle preinscription" action='#{preinscriptionBean.newPreins()}' />
+                    <br/><h:commandLink  class="btn btn-primary btn-sm " value="se connecter"  />
                 <br/>
                     <h:outputText value="Votre Identifiant : "  id="l1"/><span class="text-bold "><h:outputText value="#{preinscriptionBean.mat}" id="l5" /></span><br/>
                 <h:outputText value="Votre Mot de Passe : "  id="l2" /><span class="text-bold"><h:outputText value="#{preinscriptionBean.pass}" id="l6" /></span><br/>

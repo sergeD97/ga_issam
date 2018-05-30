@@ -133,6 +133,7 @@ public class PreinscriptionBean {
             } else {
                 preins.setHandicap(false);
             }
+            
 
             // preins.setPreinsDiplomeList(listDiplome);
             // preins.setPreinsMatiereList(listMatiere);
@@ -553,6 +554,11 @@ public class PreinscriptionBean {
             ps = "0" + ps;
         }
         return val[ind] + ps;
+    }
+    
+    public void newPreins(){
+        preins = new Preinscription();
+        pers = true;
     }
 
 }

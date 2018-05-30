@@ -5,7 +5,7 @@
         <property name="serverName" value="localhost"/>
         <property name="portNumber" value="5432"/>
         <property name="databaseName" value="bioacademy"/>
-        <property name="User" value="postgres"/>
+        <property name="User" value="serge"/>
         <property name="Password" value="systhag"/>
         <property name="URL" value="jdbc:postgresql://localhost:5432/bioacademy"/>
         <property name="driverClass" value="org.postgresql.Driver"/>
