@@ -90,6 +90,7 @@ public class LoginBean implements Serializable{
                     menuList.add(new Menu("etatPreins", "jjj.xhtml"));
                     menuList.add(new Menu("messagesPreins", "messages_preins.xhtml"));
                     menuList.add(new Menu("comptePreins", "compte_preins.xhtml"));
+                    menuList.add(new Menu("Accueil", "index.xhtml"));
                 }break;
                 case "Etudiant" : {
                     menuList.clear();
@@ -132,10 +133,12 @@ public class LoginBean implements Serializable{
     
     public String LogOut() {
         HttpSession session = SessionUtils.getSession();
-        session.removeAttribute("username");
-        session.removeAttribute("usergroup");
+        session.invalidate();
         isLogged = false;
-        return "profile_preins.xhtml?faces-redirect=true";
+        /*session.removeAttribute("username");
+        session.removeAttribute("usergroup");
+        isLogged = false;*/
+        return "login.xhtml";
     }
     
     // --- Conditions Pour le rendu visuel ---
@@ -162,6 +165,7 @@ public class LoginBean implements Serializable{
                 nom = p.getNom();
                 sexe = p.getSexe();
                 messageList = p.getMessagePreinsList();
+                System.out.println("----- NB Messages : "+messageList.size());
                 for(MessagePreins mp : p.getMessagePreinsList()) {
                     if(!mp.getMessagelu()) {
                         this.mb.getMessagePreinsNonLuList().add(mp);

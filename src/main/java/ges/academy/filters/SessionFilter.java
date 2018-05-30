@@ -36,19 +36,18 @@ public class SessionFilter implements Filter {
         String url = req.getRequestURI();
         
         if(session == null || !session.isLogged) {
-            //quand l'utilisateur n'est pas loggé
-            if(!url.contains("login.xhtml")) {
-                //s'il ne  sagit pas de la page de connexion on redirige la requete vers celle-ci.
-               resp.sendRedirect(req.getContextPath()+"/login.xhtml");
+            System.out.println("URL: "+url);
+            if(url.endsWith("ga_issam/") || url.contains("login.xhtml") || url.contains("preinscription.xhtml") || url.contains("404.xhtml")) {
             } 
-            else if(url.contains("404.xhtml")) {
+            else {
+               resp.sendRedirect(req.getServletContext().getContextPath() + "/login.xhtml");
             }
         }
         else{
             boolean autorise = false;
             // l'utilisateur est connecte .. il n'a plus acces a la page de connection.
             if(url.contains("login.xhtml")) {
-                resp.sendRedirect(req.getContextPath()+"/index.xhtml");
+                resp.sendRedirect(req.getContextPath()+"/pages/profile_preins.xhtml");
             }
             else if(url.contains("404.xhtml")) {
             }
@@ -61,7 +60,7 @@ public class SessionFilter implements Filter {
                     }
                 }
                 if(!autorise)
-                    resp.sendRedirect(req.getContextPath()+"/404.xhtml");
+                    resp.sendRedirect(req.getServletContext().getContextPath()+"/404.xhtml");
             }
             
         }

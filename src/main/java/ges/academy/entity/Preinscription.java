@@ -612,7 +612,7 @@ public class Preinscription implements Serializable {
         this.adresse = adresse;
     }
 
-    @XmlTransient
+    //@XmlTransient
     public List<MessagePreins> getMessagePreinsList() {
         return messagePreinsList;
     }
@@ -621,7 +621,7 @@ public class Preinscription implements Serializable {
         this.messagePreinsList = messagePreinsList;
     }
 
-    @XmlTransient
+    //@XmlTransient
     public List<PreinsDiplome> getPreinsDiplomeList() {
         return preinsDiplomeList;
     }
@@ -630,7 +630,7 @@ public class Preinscription implements Serializable {
         this.preinsDiplomeList = preinsDiplomeList;
     }
 
-    @XmlTransient
+    //@XmlTransient
     public List<PreinsMatiere> getPreinsMatiereList() {
         return preinsMatiereList;
     }

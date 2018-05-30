@@ -173,6 +173,7 @@ public class PreinscriptionBean {
             pass = generatePass();
             preins.setPwd(pass);
             preins.setMatricule(mat);
+            preins.setLogin(mat);
             em.merge(preins);
             //em.getTransaction().commit();
             transaction.commit();

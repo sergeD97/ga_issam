@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -11,82 +12,82 @@
         <h:outputStylesheet library="css" name="bootstrap.min.css"/>
         <!-- Font Awesome -->
         <h:outputStylesheet library="css" name="font-awesome.min.css"/>
-        <!-- Ionicons -->
-        <h:outputStylesheet library="css" name="ionicons.min.css"/>
-        <!-- Theme style -->
+        <h:outputStylesheet library="css" name="now-ui-kit.css"/>
         <h:outputStylesheet library="css" name="AdminLTE.min.css"/>
-        <h:outputStylesheet library="css" name="blue.css"/>
         <!-- Google Font -->
         <link rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"/>
     </h:head>
-    <h:body styleClass="hold-transition login-page">
-        <div class="login-box">
-        <div class="login-logo">
-          <a href="index.xhtml"><b>Admin</b>LTE</a>
-        </div>
-        <!-- /.login-logo -->
-        <div class="login-box-body">
-          <p class="login-box-msg">Sign in to start your session</p>
-
-          <h:form id="loginForm">
-              <h:outputLabel value="#{loginBean.errorMessage}" style="color:red"/>
-                <div class="form-group has-feedback">
-                    <h:inputText value="#{loginBean.nom}" class="form-control" id="username"/>
-                    <span class="fa fa-envelope form-control-feedback"></span>
-                </div>
-                <div class="form-group has-feedback">
-                    <h:inputSecret value="#{loginBean.password}"  class="form-control" id="pswd"/>
-                    <span class="fa fa-lock form-control-feedback"></span>
-                </div>
-                <!--
-                  <div class="form-group has-feedback">
-                      <input type="email" class="form-control" placeholder="Email" id="email"/>
-                    <span class="fa fa-envelope form-control-feedback"></span>
-                  </div>
-                  <div class="form-group has-feedback">
-                    <input type="password" class="form-control" placeholder="Password" id="pswd"/>
-                    <span class="fa fa-lock form-control-feedback"></span>
-                  </div>
-                  <div class="row">
-                    <div class="col-xs-8">
-                      <div class="checkbox icheck">
-                        <label>
-                          <input type="checkbox"/> Remember Me
-                        </label>
-                      </div>
+    <h:body class="index-page sidebar-collapse">
+        <nav class="navbar navbar-fixed-top" role="banner">
+            <ui:insert name="header_index">
+                <ui:include src="/template/header_index.xhtml"></ui:include>
+            </ui:insert>
+        </nav><!--/nav-->
+        <div class="page-header clear-filter" filter-color="blue" style="margin-top: 0px;font-size:16px">
+            <div class="page-header-image" data-parallax="false" style="background-image: url('resources/img/header.jpg');">
+            </div>
+            <div class="container">
+                <div class="login-box" style="margin-top: 12%;">
+                    <div class="login-logo">
+                        <a href="index.xhtml" style="color: white"><b>ISSAM</b></a>
                     </div>
-                 /.col -->
-              <div class="col-xs-4">
-                  <h:commandLink action="#{loginBean.login()}">
-                      <button class="btn btn-primary btn-block btn-flat"><i class="fa fa-sign-in"/> Sign In</button>
-                  </h:commandLink>
-              </div>
-          </h:form>
+                    <!-- /.login-logo -->
+                    <div class="login-box-body">
+                      <p class="login-box-msg">Sign in to start your session</p>
 
-          <a href="#">I forgot my password</a><br/>
-          <a href="register.html" class="text-center">Register a new membership</a>
+                      <h:form id="loginForm">
+                          <h:outputLabel value="#{loginBean.errorMessage}" style="color:red"/>
+                            <div class="form-group has-feedback">
+                                <h:inputText value="#{loginBean.nom}" class="form-control" id="username"/>
+                                <span class="fa fa-envelope form-control-feedback"></span>
+                            </div>
+                            <div class="form-group has-feedback">
+                                <h:inputSecret value="#{loginBean.password}"  class="form-control" id="pswd"/>
+                                <span class="fa fa-lock form-control-feedback"></span>
+                            </div>
+                            <!--
+                              <div class="form-group has-feedback">
+                                  <input type="email" class="form-control" placeholder="Email" id="email"/>
+                                <span class="fa fa-envelope form-control-feedback"></span>
+                              </div>
+                              <div class="form-group has-feedback">
+                                <input type="password" class="form-control" placeholder="Password" id="pswd"/>
+                                <span class="fa fa-lock form-control-feedback"></span>
+                              </div>
+                              <div class="row">
+                                <div class="col-xs-8">
+                                  <div class="checkbox icheck">
+                                    <label>
+                                      <input type="checkbox"/> Remember Me
+                                    </label>
+                                  </div>
+                                </div>
+                             /.col -->
+                          <div class="col-xs-4">
+                              <h:commandLink action="#{loginBean.login()}">
+                                  <button class="btn btn-primary btn-block btn-flat"><i class="fa fa-sign-in"/> Sign In</button>
+                              </h:commandLink>
+                          </div>
+                      </h:form>
 
+                      <a href="#">I forgot my password</a><br/>
+                      <a href="register.html" class="text-center">Register a new membership</a>
+
+                    </div>
+                    <!-- /.login-box-body -->
+                </div>
+                <!-- /.login-box -->
+            </div>
         </div>
-        <!-- /.login-box-body -->
-      </div>
-      <!-- /.login-box -->
         
+        <!-- REQUIRED JS SCRIPTS -->
+
         <!-- jQuery 3 -->
         <h:outputScript library="js" name="jquery.min.js"/>
         <!-- Bootstrap 3.3.7 -->
         <h:outputScript library="js" name="bootstrap.min.js"/>
-        <!-- iCheck -->
-        <h:outputScript library="js" name="icheck.min.js"/>
-        <script>
-            $(function () {
-              $('input').iCheck({
-                checkboxClass: 'icheckbox_square-blue',
-                radioClass: 'iradio_square-blue',
-                increaseArea: '20%' // optional
-              });
-            });
-        </script>
+        <h:outputScript library="js" name="now-ui-kit.js"/>
     </h:body>
 </html>
 

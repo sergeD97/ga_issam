@@ -33,12 +33,12 @@
                             <h:outputLink value="#{m.lien}"><i class="fa fa-link"></i><span>#{m.idMenu}</span></h:outputLink>
                         </li>
                     </ui:repeat>-->
-                    <li class="active"><h:outputLink value="/faces/pages/gestion_utilisateur.xhtml" rendered='#{loginBean.isMenuRendered("userMenu")}'><i class="fa fa-link"></i><span>Utilisateurs</span></h:outputLink></li>
-                    <li><h:outputLink value="/faces/pages/gestion_groupe.xhtml" rendered='#{loginBean.isMenuRendered("groupMenu")}'><i class="fa fa-link"></i><span>Groupes</span></h:outputLink></li>
-                    <li><h:outputLink value="/faces/pages/gestion_utilisateur.xhtml" rendered='#{loginBean.isMenuRendered("autreMenu")}'><i class="fa fa-link"></i> <span>Another Link</span></h:outputLink></li>
+                    <li class="active"><h:outputLink value="pages/gestion_utilisateur.xhtml" rendered='#{loginBean.isMenuRendered("userMenu")}'><i class="fa fa-link"></i><span>Utilisateurs</span></h:outputLink></li>
+                    <li><h:outputLink value="pages/gestion_groupe.xhtml" rendered='#{loginBean.isMenuRendered("groupMenu")}'><i class="fa fa-link"></i><span>Groupes</span></h:outputLink></li>
+                    <li><h:outputLink value="pages/gestion_utilisateur.xhtml" rendered='#{loginBean.isMenuRendered("autreMenu")}'><i class="fa fa-link"></i> <span>Another Link</span></h:outputLink></li>
                     <!-- Menu ProfilePreins -->
                     <li>
-                        <h:outputLink value="#{request.contextPath}/faces/pages/profile_preins.xhtml" rendered='#{loginBean.isMenuRendered("profilePreins")}'>
+                        <h:outputLink value="#{request.contextPath}/pages/profile_preins.xhtml" rendered='#{loginBean.isMenuRendered("profilePreins")}'>
                             <i class="fa fa-graduation-cap"></i>
                             <span>Mon profil</span>
                         </h:outputLink>
@@ -50,14 +50,13 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><h:outputLink value="#{request.contextPath}/faces/pages/preinscription.xhtml" rendered='#{loginBean.isMenuRendered("newPreins")}'><i class="fa fa-edit"/>Nouvelle</h:outputLink></li>
-                            <li><h:outputLink value="#" rendered='#{loginBean.isMenuRendered("modifierPreins")}'><i class="fa fa-edit"/>Modifier</h:outputLink></li>
+                            <li><h:outputLink value="#{request.contextPath}/pages/preinscription.xhtml" rendered='#{loginBean.isMenuRendered("modifierPreins")}'><i class="fa fa-edit"/>Modifier</h:outputLink></li>
                             <li><h:outputLink value="#" rendered='#{loginBean.isMenuRendered("etatPreins")}'><i class="fa fa-percent"/>Etat</h:outputLink></li>
                         </ul>
                     </li>
                     <!-- Menu MessagesPreins -->
                     <li>
-                        <h:outputLink value="#{request.contextPath}/faces/pages/messages_preins.xhtml" rendered='#{loginBean.isMenuRendered("messagesPreins")}'>
+                        <h:outputLink value="#{request.contextPath}/pages/messages_preins.xhtml" rendered='#{loginBean.isMenuRendered("messagesPreins")}'>
                             <i class="fa fa-envelope"></i>
                             <span>Messages</span>
                             <span class="pull-right-container"><h:outputLabel value="#{messageBean.nbMsg}" rendered="#{!messageBean.nbMsgNull}" class="label label-success pull-right"/></span>
@@ -65,7 +64,7 @@
                     </li>
                     <!-- Menu ComptePreins -->
                     <li>
-                        <h:outputLink value="#{request.contextPath}/faces/pages/compte_preins.xhtml" rendered='#{loginBean.isMenuRendered("comptePreins")}'>
+                        <h:outputLink value="#{request.contextPath}/pages/compte_preins.xhtml" rendered='#{loginBean.isMenuRendered("comptePreins")}'>
                             <i class="fa fa-cog"></i>
                             <span>Compte</span>
                         </h:outputLink>

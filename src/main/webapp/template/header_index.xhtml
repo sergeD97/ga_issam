@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition>
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="index.xhtml" class="logo">
+                        <!-- mini logo for sidebar mini 50x50 pixels 
+                        <span class="logo-mini"><b>I</b>SM</span>-->
+                        <!-- logo for regular state and mobile devices -->
+                        <span class="logo-lg"><b>ISSAM</b>school</span>
+                    </a>
+                </div>
+				
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="index.html">Acceuil</a></li>
+                        <li><a href="about-us.html">A propos</a></li>
+                        <li><a href="services.html">Formations</a></li>
+                        <li><a href="portfolio.html">Espace Membre</a></li>
+                        <li><h:outputLink value="login.xhtml" class="text-blue"><i class="fa fa-sign-in"/>&nbsp; <b>Se Connecter</b></h:outputLink></li>                      
+                        <li class="dropdown messages-menu">
+                            <!-- Menu toggle button -->
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                              <i class="fa fa-language"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="header">Choisissez une langue</li>
+                              <li>
+                                <!-- inner menu: contains the messages -->
+                                <h:form>
+                                <ul class="menu">
+                                    <ui:repeat value="#{langueBean.listLangue}" var="l" varStatus="msgIndex">
+                                        <li>
+                                            <h:commandLink action="#{langueBean.setLangue(l)}">
+                                                <div class="pull-left"><i class="fa fa-language"/>#{l.label}</div>
+                                            </h:commandLink>
+                                        </li>
+                                    </ui:repeat>
+                                </ul>
+                                </h:form>
+                                <!-- /.menu -->
+                              </li>
+                              <li class="footer">
+                                  <h:outputLink value="#{request.contextPath}/pages/messages_preins.xhtml" rendered='#{loginBean.isMenuRendered("messagesPreins")}'>See All Messages</h:outputLink></li>
+                            </ul>
+                          </li>
+                          <!-- /.messages-menu -->
+                    </ul>
+                </div>
+            </div><!--/.container-->
+        </ui:composition>
+    </h:body>
+</html>
+
