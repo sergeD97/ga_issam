@@ -85,10 +85,10 @@ function verifier(root){
     var emailRegex;
     var check = true;
     //return true;
-    //alert(elControls[1].value.trim());
+    //alert(elControls[0].className.indexOf("ignore"));
     for(var i=0; i < t; i++){
-        
-        if(!(elControls[i].style.display==="none")){
+        if((elControls[i].className.indexOf("ignore") == -1)){
+        if((elControls[i].style.display !=="none")){
         
         if(elControls[i].value==""){
             elControls[i].style.borderColor="red";
@@ -103,8 +103,11 @@ function verifier(root){
             }
         }
         
-        
         }else{
+            elControls[i].style.borderColor="";
+
+        }
+    }else{
              elControls[i].style.borderColor="";
         }
     }

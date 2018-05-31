@@ -44,6 +44,18 @@ public class Administrateur implements Serializable {
     @Size(max = 2147483647)
     @Column(name = "pwd")
     private String pwd;
+    @Size(max = 1)
+    @Column(name = "sexe")
+    private String sexe;
+
+    public String getSexe() {
+        return sexe;
+    }
+
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
+    }
+    
 
     public Administrateur() {
     }
