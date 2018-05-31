@@ -33,12 +33,16 @@
                             <h:outputLink value="#{m.lien}"><i class="fa fa-link"></i><span>#{m.idMenu}</span></h:outputLink>
                         </li>
                     </ui:repeat>-->
-                    <li class="active"><h:outputLink value="pages/gestion_utilisateur.xhtml" rendered='#{loginBean.isMenuRendered("userMenu")}'><i class="fa fa-link"></i><span>Utilisateurs</span></h:outputLink></li>
-                    <li><h:outputLink value="pages/gestion_groupe.xhtml" rendered='#{loginBean.isMenuRendered("groupMenu")}'><i class="fa fa-link"></i><span>Groupes</span></h:outputLink></li>
-                    <li><h:outputLink value="pages/gestion_utilisateur.xhtml" rendered='#{loginBean.isMenuRendered("autreMenu")}'><i class="fa fa-link"></i> <span>Another Link</span></h:outputLink></li>
+                    <li class="active"><h:outputLink value="gestion_etudiants.xhtml" rendered='#{loginBean.isMenuRendered("etudiantMenu")}'><i class="fa fa-link"></i><span>Etudiants</span></h:outputLink></li>
+                    <li><h:outputLink value="gestion_groupe.xhtml" rendered='#{loginBean.isMenuRendered("groupMenu")}'><i class="fa fa-link"></i><span>Groupes</span></h:outputLink></li>
+                    <li><h:outputLink value="gestion_utilisateur.xhtml" rendered='#{loginBean.isMenuRendered("autreMenu")}'><i class="fa fa-link"></i> <span>Another Link</span></h:outputLink></li>
                     <!-- Menu ProfilePreins -->
                     <li>
-                        <h:outputLink value="#{request.contextPath}/pages/profile_preins.xhtml" rendered='#{loginBean.isMenuRendered("profilePreins")}'>
+                        <h:outputLink value="#{request.contextPath}/profile_preins.xhtml" rendered='#{loginBean.isMenuRendered("profilePreins")}'>
+                            <i class="fa fa-graduation-cap"></i>
+                            <span>Mon profil</span>
+                        </h:outputLink>
+                        <h:outputLink value="#{request.contextPath}/profile_admin.xhtml" rendered='#{loginBean.isMenuRendered("profileAdmin")}'>
                             <i class="fa fa-graduation-cap"></i>
                             <span>Mon profil</span>
                         </h:outputLink>
@@ -56,7 +60,7 @@
                     </li>
                     <!-- Menu MessagesPreins -->
                     <li>
-                        <h:outputLink value="#{request.contextPath}/pages/messages_preins.xhtml" rendered='#{loginBean.isMenuRendered("messagesPreins")}'>
+                        <h:outputLink value="#{request.contextPath}/messages_preins.xhtml" rendered='#{loginBean.isMenuRendered("messagesPreins")}'>
                             <i class="fa fa-envelope"></i>
                             <span>Messages</span>
                             <span class="pull-right-container"><h:outputLabel value="#{messageBean.nbMsg}" rendered="#{!messageBean.nbMsgNull}" class="label label-success pull-right"/></span>
@@ -64,7 +68,7 @@
                     </li>
                     <!-- Menu ComptePreins -->
                     <li>
-                        <h:outputLink value="#{request.contextPath}/pages/compte_preins.xhtml" rendered='#{loginBean.isMenuRendered("comptePreins")}'>
+                        <h:outputLink value="#{request.contextPath}/compte_preins.xhtml" rendered='#{loginBean.isMenuRendered("comptePreins")}'>
                             <i class="fa fa-cog"></i>
                             <span>Compte</span>
                         </h:outputLink>

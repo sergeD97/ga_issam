@@ -28,7 +28,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Administrateur.findAll", query = "SELECT a FROM Administrateur a"),
     @NamedQuery(name = "Administrateur.findByMatricule", query = "SELECT a FROM Administrateur a WHERE a.matricule = :matricule"),
     @NamedQuery(name = "Administrateur.findByNom", query = "SELECT a FROM Administrateur a WHERE a.nom = :nom"),
-    @NamedQuery(name = "Administrateur.findByPwd", query = "SELECT a FROM Administrateur a WHERE a.pwd = :pwd")})
+    @NamedQuery(name = "Administrateur.findByPwd", query = "SELECT a FROM Administrateur a WHERE a.pwd = :pwd"),
+    @NamedQuery(name = "Administrateur.findBySexe", query = "SELECT a FROM Administrateur a WHERE a.sexe = :sexe")})
 public class Administrateur implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,6 +45,9 @@ public class Administrateur implements Serializable {
     @Size(max = 2147483647)
     @Column(name = "pwd")
     private String pwd;
+    @Size(max = 1)
+    @Column(name = "sexe")
+    private String sexe;
 
     public Administrateur() {
     }
@@ -76,6 +80,14 @@ public class Administrateur implements Serializable {
         this.pwd = pwd;
     }
 
+    public String getSexe() {
+        return sexe;
+    }
+
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -90,10 +102,7 @@ public class Administrateur implements Serializable {
             return false;
         }
         Administrateur other = (Administrateur) object;
-        if ((this.matricule == null && other.matricule != null) || (this.matricule != null && !this.matricule.equals(other.matricule))) {
-            return false;
-        }
-        return true;
+        return !((this.matricule == null && other.matricule != null) || (this.matricule != null && !this.matricule.equals(other.matricule)));
     }
 
     @Override
