@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -23,7 +24,8 @@ import javax.persistence.PersistenceContext;
 public class AdminBean implements Serializable {
     @PersistenceContext(unitName = "gecadPU")
     EntityManager em;
-    
+    @ManagedProperty("#{loginBean}")
+    private LoginBean lb;
     private List<Preinscription> preinsList;
     
     public AdminBean() {
