@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -133,6 +134,7 @@ public class PreinscriptionBean {
             } else {
                 preins.setHandicap(false);
             }
+            
 
             // preins.setPreinsDiplomeList(listDiplome);
             // preins.setPreinsMatiereList(listMatiere);
@@ -173,7 +175,6 @@ public class PreinscriptionBean {
             pass = generatePass();
             preins.setPwd(pass);
             preins.setMatricule(mat);
-            preins.setLogin(mat);
             em.merge(preins);
             //em.getTransaction().commit();
             transaction.commit();
@@ -554,6 +555,11 @@ public class PreinscriptionBean {
             ps = "0" + ps;
         }
         return val[ind] + ps;
+    }
+    
+    public void newPreins(){
+        preins = new Preinscription();
+        pers = true;
     }
 
 }
