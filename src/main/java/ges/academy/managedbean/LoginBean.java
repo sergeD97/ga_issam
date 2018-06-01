@@ -35,6 +35,7 @@ public class LoginBean implements Serializable{
     @PersistenceContext(unitName = "gecadPU")
     EntityManager em;
     private Preinscription userPreinscrit;
+    private Administrateur userAdmin;
     @ManagedProperty("#{messageBean}")
     private messageBean mb;
     private String matricule;
@@ -52,6 +53,7 @@ public class LoginBean implements Serializable{
     // --- Constructors ---
     public LoginBean() {
         userPreinscrit = new Preinscription();
+        userAdmin = new Administrateur();
         menuList = new ArrayList<>();
         messageList = new ArrayList<>();
         messagePreinsToRead = new MessagePreins();
@@ -90,6 +92,7 @@ public class LoginBean implements Serializable{
                     menuList.add(new Menu("etatPreins", "jjj.xhtml"));
                     menuList.add(new Menu("messagesPreins", "messages_preins.xhtml"));
                     menuList.add(new Menu("comptePreins", "compte_preins.xhtml"));
+                    menuList.add(new Menu("Accueil", "index.xhtml"));
                 }break;
                 case "Etudiant" : {
                     menuList.clear();
@@ -105,12 +108,13 @@ public class LoginBean implements Serializable{
                 }break;
                 case "Administrateur" : {
                     menuList.clear();
-                    menuList.add(new Menu("userMenu", "pages/gestion_utilisateur.xhtml"));
-                    menuList.add(new Menu("groupMenu", "pages/gestion_groupe.xhtml"));
-                    menuList.add(new Menu("autreMenu", "pages/autremenu.xhtml"));
-                    menuList.add(new Menu("sousMenu1", "pages/sousmenu1.xhtml"));
-                    menuList.add(new Menu("sousMenu2", "pages/sousmenu2.xhtml"));
-                    menuList.add(new Menu("profileAdmim", "pages/profile_admin.xhtml"));
+                    menuList.add(new Menu("etudiantMenu", "gestion_etudiants.xhtml?faces-redirect=true"));
+                    menuList.add(new Menu("groupMenu", "gestion_groupe.xhtml?faces-redirect=true"));
+                    menuList.add(new Menu("autreMenu", "autremenu.xhtml?faces-redirect=true"));
+                    menuList.add(new Menu("sousMenu1", "sousmenu1.xhtml"));
+                    menuList.add(new Menu("sousMenu2", "sousmenu2.xhtml"));
+                    menuList.add(new Menu("profileAdmim", "profile_admin.xhtml?faces-redirect=true"));
+                    menuList.add(new Menu("Accueil", "index.xhtml"));
                 }break;
                 default : { System.out.println("La valeur de l'attribut 'userGroup' est nulle!");}
             }
@@ -132,10 +136,12 @@ public class LoginBean implements Serializable{
     
     public String LogOut() {
         HttpSession session = SessionUtils.getSession();
-        session.removeAttribute("username");
-        session.removeAttribute("usergroup");
+        session.invalidate();
         isLogged = false;
-        return "profile_preins.xhtml?faces-redirect=true";
+        /*session.removeAttribute("username");
+        session.removeAttribute("usergroup");
+        isLogged = false;*/
+        return "login.xhtml";
     }
     
     // --- Conditions Pour le rendu visuel ---
@@ -162,6 +168,7 @@ public class LoginBean implements Serializable{
                 nom = p.getNom();
                 sexe = p.getSexe();
                 messageList = p.getMessagePreinsList();
+                System.out.println("----- NB Messages : "+messageList.size());
                 for(MessagePreins mp : p.getMessagePreinsList()) {
                     if(!mp.getMessagelu()) {
                         this.mb.getMessagePreinsNonLuList().add(mp);
@@ -202,11 +209,15 @@ public class LoginBean implements Serializable{
 
     private boolean isAdmin() {
         boolean flag = false;
-        List<Administrateur> adminList = getEm().createNamedQuery("Administrateur.findAll").getResultList();
-        for(Administrateur a : adminList) {
-            if(a.getNom().equals(this.getNom()) && a.getPwd().equals(this.getPassword())) {
+        List<Administrateur> adminList = getEm().createNamedQuery("Administrateur.findByMatricule").setParameter("matricule", this.getNom()).getResultList();
+        for(Administrateur a  : adminList) {
+            if((a.getMatricule().equals(this.getNom()) || a.getNom().equals(this.getNom())) && a.getPwd().equals(this.getPassword())) {
                 flag = true;
-                a.getMatricule();
+                userAdmin = a;
+                matricule = a.getMatricule();
+                nom = a.getNom();
+                sexe = a.getSexe();
+                imgP = imgProfile();
             }
         }
         return flag;
@@ -233,6 +244,14 @@ public class LoginBean implements Serializable{
 
     public void setUserPreinscrit(Preinscription userPreinscrit) {
         this.userPreinscrit = userPreinscrit;
+    }
+
+    public Administrateur getUserAdmin() {
+        return userAdmin;
+    }
+
+    public void setUserAdmin(Administrateur userAdmin) {
+        this.userAdmin = userAdmin;
     }
 
     public String getMatricule() {

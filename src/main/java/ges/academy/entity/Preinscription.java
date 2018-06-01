@@ -612,7 +612,7 @@ public class Preinscription implements Serializable {
         this.adresse = adresse;
     }
 
-    @XmlTransient
+    //@XmlTransient
     public List<MessagePreins> getMessagePreinsList() {
         return messagePreinsList;
     }
