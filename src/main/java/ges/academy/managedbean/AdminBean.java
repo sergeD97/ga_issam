@@ -7,6 +7,7 @@
 package ges.academy.managedbean;
 
 import ges.academy.entity.Preinscription;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ApplicationScoped;
@@ -19,7 +20,7 @@ import javax.persistence.PersistenceContext;
  */
 @ManagedBean(name="adminBean")
 @ApplicationScoped
-public class AdminBean {
+public class AdminBean implements Serializable {
     @PersistenceContext(unitName = "gecadPU")
     EntityManager em;
     
@@ -27,7 +28,7 @@ public class AdminBean {
     
     public AdminBean() {
         preinsList = new ArrayList<>();
-        preinsList = getEm().createNamedQuery("Preinscription.findAll").getResultList();
+        populateList();
     }
 
     public EntityManager getEm() {
@@ -44,6 +45,12 @@ public class AdminBean {
 
     public void setPreinsList(List<Preinscription> preinsList) {
         this.preinsList = preinsList;
+    }
+
+    private void populateList() {
+        //List<Preinscription> list = getEm().createNamedQuery("Preinscription.findAll").getResultList();
+        //this.preinsList = list;
+        System.out.println("nombre : "+preinsList.size());
     }
     
 }
